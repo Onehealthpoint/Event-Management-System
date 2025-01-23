@@ -1,0 +1,97 @@
+﻿@model Event_Management_System.Models.OrganizationMembers
+
+@{
+    ViewData["Title"] = "Edit Member";
+}
+
+<style>
+    .form-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .page-title {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(66, 153, 225, 0.25);
+    }
+
+    .btn-submit {
+        width: 100%;
+    }
+</style>
+
+<div class="form-container">
+    <h2 class="page-title">Edit Member</h2>
+
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="MemberId" />
+
+        <div class="form-group">
+            <label asp-for="MemberName" class="control-label"></label>
+            <input asp-for="MemberName" class="form-control" />
+            <span asp-validation-for="MemberName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MemberDateOfBirth" class="control-label"></label>
+            <input asp-for="MemberDateOfBirth" class="form-control" type="date" />
+            <span asp-validation-for="MemberDateOfBirth" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MemberEmail" class="control-label"></label>
+            <input asp-for="MemberEmail" class="form-control" type="email" />
+            <span asp-validation-for="MemberEmail" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MemberPhone" class="control-label"></label>
+            <input asp-for="MemberPhone" class="form-control" type="tel" />
+            <span asp-validation-for="MemberPhone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label>Select Events</label>
+            <div class="checkbox-list">
+                @foreach (var evt in ViewBag.AllEvents)
+                {
+                    <div class="checkbox-item">
+                        <input type="checkbox" name="selectedEvents" value="@evt.EventId" id="event_@evt.EventId"
+                        @(ViewBag.SelectedEvents.Contains(evt.EventId) ? "checked" : "") />
+                        <label for="event_@evt.EventId">@evt.EventName</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary btn-submit" />
+        </div>
+    </form>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
