@@ -1,0 +1,121 @@
+﻿@model Event_Management_System.Models.EventSystemModel
+
+@{
+    ViewData["Title"] = "Event Details";
+}
+
+<style>
+    .details-container {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .page-title {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .detail-item {
+        margin-bottom: 1rem;
+    }
+
+    .detail-label {
+        font-weight: bold;
+        color: var(--secondary-color);
+    }
+
+    .table {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .thead {
+        font: bold;
+        background-color: grey;
+    }
+
+    .tbody {
+        max-height: 550px;
+    }
+
+    .tr {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        border-top: solid 1px darkgrey;
+    }
+
+    .th {
+        background-color: var(--primary-color);
+        color: white;
+        width: 33%;
+        margin: auto auto;
+    }
+
+    .td {
+        width: 33%;
+        margin: auto auto;
+    }
+</style>
+
+<div class="details-container">
+    <h2 class="page-title">Event Details</h2>
+
+    <div class="detail-item">
+        <span class="detail-label">Event Name:</span>
+        <span>@Html.DisplayFor(model => model.EventName)</span>
+    </div>
+
+    <div class="detail-item">
+        <span class="detail-label">Description:</span>
+        <span>@Html.DisplayFor(model => model.EventDescription)</span>
+    </div>
+
+    <div class="detail-item">
+        <span class="detail-label">Date and Time:</span>
+        <span>@Html.DisplayFor(model => model.EventDateTime)</span>
+    </div>
+
+    <div class="detail-item">
+        <span class="detail-label">Venue:</span>
+        <span>@Html.DisplayFor(model => model.EventVenue)</span>
+    </div>
+
+    <div class="detail-item">
+        <span class="detail-label">Members:</span>
+        <div class="table">
+            <div class="thead">
+                <div class="tr">
+                    <div class="th">Member Name</div>
+                    <div class="th">Email</div>
+                    <div class="th">Phone</div>
+                </div>
+            </div>
+            <div class="tbody">
+                @foreach (var attendee in ViewBag.Attendees)
+                {
+                    <a asp-controller="Member" asp-action="Details" asp-route-id="@attendee.MemberId">
+                        <div class="tr">
+                            <div class="td">@attendee.MemberName</div>
+                            <div class="td">@attendee.MemberEmail</div>
+                            <div class="td">@attendee.MemberPhone</div>
+                        </div>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.EventId" class="btn btn-primary">Edit</a>
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>
+

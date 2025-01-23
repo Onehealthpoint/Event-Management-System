@@ -1,0 +1,60 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    .jumbotron {
+        background-color: white;
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 2rem;
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-title {
+        color: var(--primary-color);
+    }
+</style>
+
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Event Management System</h1>
+    <p class="lead">Organize and manage your events and members with ease.</p>
+    <hr class="my-4">
+    <p>Get started by exploring our events or managing your members.</p>
+    <a class="btn btn-success btn-lg" asp-controller="Event" asp-action="Index" role="button">View Events</a>
+    <a class="btn btn-secondary btn-lg" asp-controller="Member" asp-action="Index" role="button">Manage Members</a>
+    <a class="btn btn-primary btn-lg" asp-controller="Calender" asp-action="Index" role="button">Check Calender</a>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Events</h5>
+                <p class="card-text">Create, view, and manage your events. Keep track of all your upcoming activities.</p>
+                <a asp-controller="Event" asp-action="Index" class="btn btn-primary">Go to Events</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Members</h5>
+                <p class="card-text">Manage your organization's members. Add new members and update existing ones.</p>
+                <a asp-controller="Member" asp-action="Index" class="btn btn-primary">Go to Members</a>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Event_Management_System.Models.OrganizationMembers>
+
+@{
+    ViewData["Title"] = "Members";
+}
+
+<style>
+    .page-title {
+        color: var(--secondary-color);
+        margin-bottom: 1.5rem;
+    }
+
+    .table {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+    }
+
+    .thead {
+        font: bold;
+        background-color: grey;
+    }
+
+    .tbody {
+        max-height: 550px;
+        overflow-y: scroll;
+    }
+
+    .tr {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .th {
+        background-color: var(--primary-color);
+        color: white;
+        width: 25%;
+        margin: auto auto;
+    }
+
+    .td {
+        width: 25%;
+        margin: auto auto;
+    }
+
+    .btn-action {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.875rem;
+    }
+</style>
+
+<h2 class="page-title">Members</h2>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Member</a>
+</p>
+<div class="table">
+    <div class="thead">
+        <div class="tr">
+            <div class="th">@Html.DisplayNameFor(model => model.MemberName)</div>
+            <div class="th">@Html.DisplayNameFor(model => model.MemberEmail)</div>
+            <div class="th">@Html.DisplayNameFor(model => model.MemberPhone)</div>
+            <div class="th">Actions</div>
+        </div>
+    </div>
+    <div class="tbody">
+        @foreach (var item in Model)
+        {
+            <div class="tr">
+                <div class="td">@Html.DisplayFor(modelItem => item.MemberName)</div>
+                <div class="td">@Html.DisplayFor(modelItem => item.MemberEmail)</div>
+                <div class="td">@Html.DisplayFor(modelItem => item.MemberPhone)</div>
+                <div class="td">
+                    <a asp-action="Edit" asp-route-id="@item.MemberId" class="btn btn-primary btn-action">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.MemberId" class="btn btn-info btn-action">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.MemberId" class="btn btn-danger btn-action">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
