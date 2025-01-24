@@ -4,7 +4,7 @@
 -- Create database named 'mydb'
 CREATE DATABASE IF NOT EXISTS mydb;
 
--- Used database 'mydb'
+-- Use database 'mydb'
 USE mydb;
 
 -- Create table for Members
