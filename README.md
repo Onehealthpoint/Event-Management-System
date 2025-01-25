@@ -26,9 +26,9 @@ CREATE TABLE Events (
 );
 
 -- Create table for Events-to-Members
-CREATE TABLE EventMembers (
+CREATE TABLE EventAttendees (
     EventId VARCHAR(20) NOT NULL,
-    MemberId VARCHAR(20) NOT NULL,
+    MemberId VARCHAR(20) NOT NULL
 );
 
 -- Add data to 'Events' table
