@@ -13,6 +13,7 @@ namespace Event_Management_System.Models
         [MaxLength(20)] public string? EventVenue { get; set; }
 
         private const string connectionString = "SERVER=sql12.freesqldatabase.com;DATABASE=sql12759678;UID=sql12759678;PASSWORD=UzELmxgsAG;PORT=3306;";
+        private const string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
         public void Read(string EventId)
         {
@@ -130,6 +131,7 @@ namespace Event_Management_System.Models
         [MaxLength(10)] public string? MemberPhone { get; set; }
 
         private const string connectionString = "SERVER=sql12.freesqldatabase.com;DATABASE=sql12759678;UID=sql12759678;PASSWORD=UzELmxgsAG;PORT=3306;";
+        private const string connectionString = "SERVER=localhost;DATABASE=mydb;UID=root;PASSWORD=;";
 
         public void Read(string MemberId)
         {
