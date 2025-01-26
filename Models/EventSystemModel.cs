@@ -245,7 +245,7 @@ namespace Event_Management_System.Models
         public required string EventId { get; set; }
         public required string MemberId { get; set; }
 
-        private const string connectionString = "SERVER=sql12.freesqldatabase.com;DATABASE=sql12759678;UID=sql12759678;PASSWORD=UzELmxgsAG;PORT=3306;";
+        private const string connectionString = "SERVER=sql12.freesqldatabase.com;DATABASE=sql12759678;UID=sql12759678;PASSWORD=UzELmxgsAG;PORT=3306;"
 
         public void Read(string EventId, string MemberId)
         {
