@@ -239,7 +239,7 @@ namespace Event_Management_System.Models
             return members;
         }
     }
-
+     
     public class EventAttendees
     {
         public required string EventId { get; set; }
